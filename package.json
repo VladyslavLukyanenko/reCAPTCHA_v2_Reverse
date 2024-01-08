@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@types/estraverse": "^5.1.0",
+    "escodegen": "^2.0.0",
+    "esprima": "^4.0.1",
+    "estraverse": "^5.2.0"
+  }
+}

@@ -1,0 +1,55 @@
+static function OnBeforeResponse(oSession: Session) {
+    if (oSession.uriContains("/recaptcha/api.js")){
+        oSession["ui-color"]="orange";
+        oSession["ui-bold"]="true";
+        var deobfuscatedV = System.IO.File.ReadAllText("D:\\Workspace\\Clients\\VladykLukyanenko\\recaptcha\\api.js");
+        //oSession.oResponse["X-Alantoo"]=deobfuscatedV;
+        oSession.utilSetResponseBody(deobfuscatedV);
+        //oSession.oRequest.FailSession(404, "Blocked", "Fiddler blocked CSS file");
+    }
+
+
+    if (oSession.uriContains("recaptcha/releases/5mNs27FP3uLBP3KBPib88r1g/recaptcha__en.js")){
+        oSession["ui-color"]="orange";
+        oSession["ui-bold"]="true";
+        var deobfuscatedV = System.IO.File.ReadAllText("D:\\Workspace\\Clients\\VladykLukyanenko\\recaptcha\\deobfuscated.js");
+        //oSession.oResponse["X-Alantoo"]=deobfuscatedV;
+        oSession.utilSetResponseBody(deobfuscatedV);
+        //oSession.oRequest.FailSession(404, "Blocked", "Fiddler blocked CSS file");
+    }
+
+
+    if (oSession.uriContains("/api2/anchor")){
+        oSession["ui-color"]="orange";
+        oSession["ui-bold"]="true";
+        var deobfuscatedV = System.IO.File.ReadAllText("D:\\Workspace\\Clients\\VladykLukyanenko\\recaptcha\\anchor.html");
+        //oSession.oResponse["X-Alantoo"]=deobfuscatedV;
+        oSession.oResponse["Content-Security-Policy"] = "script-src 'report-sample' 'nonce-xXT7sunmhygJWSUTX06lVg' 'unsafe-inline' 'strict-dynamic' https: http: 'unsafe-eval';object-src 'none';base-uri 'self';report-uri https://csp.withgoogle.com/csp/recaptcha/1";
+        oSession.utilSetResponseBody(deobfuscatedV);
+        //oSession.oRequest.FailSession(404, "Blocked", "Fiddler blocked CSS file");
+    }
+
+    if (oSession.uriContains("/api2/bframe")){
+        oSession["ui-color"]="orange";
+        oSession["ui-bold"]="true";
+        var deobfuscatedV = System.IO.File.ReadAllText("D:\\Workspace\\Clients\\VladykLukyanenko\\recaptcha\\bframe.html");
+        //oSession.oResponse["X-Alantoo"]=deobfuscatedV;
+        oSession.oResponse["Content-Security-Policy"] = "script-src 'report-sample' 'nonce-CZS3Zjb+ITY6UzWDNnZ5Kg' 'unsafe-inline' 'strict-dynamic' https: http: 'unsafe-eval';object-src 'none';base-uri 'self';report-uri https://csp.withgoogle.com/csp/recaptcha/1";
+        oSession.utilSetResponseBody(deobfuscatedV);
+        //oSession.oRequest.FailSession(404, "Blocked", "Fiddler blocked CSS file");
+    }   /**/
+
+
+
+    // ... other pregenerated trash
+}
+
+
+
+static function OnBeforeRequest(oSession: Session) {
+    if (oSession.uriContains("https://csp.withgoogle.com")) {
+        oSession.oRequest.FailSession(204, "Fiddler blocked", "Intercepted by fiddler");
+    }
+
+    // ... other pregenerated trash
+}
